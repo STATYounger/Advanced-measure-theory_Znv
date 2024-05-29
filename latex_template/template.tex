@@ -130,7 +130,124 @@ Since \(\nu\) satisfies both (1) and (2), we have shown that \(\nu(A) := \int_A 
 \boxed{\nu(A) = \int_A f \, d\mu \text{ is a finite signed measure.}}
 \]
 \end{myproof}
+\nt{Additivity: A finite signed measure $\nu$ is additive in the sense that
+\begin{align}
+    \nu(\bigcup^N_{n=1}A_n)=\sum_{n=1}^N\nu(A_n)
+\end{align}for arbitrary $N\in\mathbb{N}$ and $A_1,A_2,\cdots,A_N\in\SA$.}
+\ex{Continuity properties of signed measures}{
+Let $\nu$ be a finite signed measure on $(\Omega,\SA)$. Show that for arbitary sets $B_1\subset B_2\subset B_3\subset\cdots$ in $\SA$,
+\begin{align*}
+    \nu(\bigcup_{n=1}^{\infty}B_n)=\lim_{n\to\infty}\nu(B_n_
+    ).
+\end{align*}
+Show that for arbitrary sets $C_1\supset C_2\supset C_3\supset\cdots$ in $\SA$,
+\begin{align*}
+    \nu(\bigcap_{n=1}^{\infty}C_n)=\lim_{n\to\infty}\nu(C_n).
+\end{align*}
+}
+\begin{myproof}
+    Let's prove the two statements given for a finite signed measure \(\nu\) on \((\Omega, \mathcal{A})\).
 
+\textcolor{blue}{1. Monotone Convergence for Increasing Sequence of Sets}
+
+Statement: For arbitrary sets \(B_1 \subset B_2 \subset B_3 \subset \cdots\) in \(\mathcal{A}\),
+\[ \nu\left(\bigcup_{n=1}^\infty B_n\right) = \lim_{n \to \infty} \nu(B_n). \]
+
+
+Define \(B = \bigcup_{n=1}^\infty B_n\). The sequence \(\{B_n\}\) is increasing, so \(B_n \subset B_{n+1}\) for all \(n\). 
+
+Using the definition of \(\nu\) as a signed measure, we can express \(\nu(B)\) as the limit of \(\nu(B_n)\).
+
+First, observe that:
+\[ B = \bigcup_{n=1}^\infty B_n. \]
+
+Since the \(B_n\) are increasing,
+\[ \nu(B_n) \leq \nu(B_{n+1}) \]
+for all \(n\). Thus, the sequence \(\{\nu(B_n)\}\) is monotone increasing.
+
+Because \(\nu\) is a finite signed measure, it is bounded. Hence, the monotone sequence \(\{\nu(B_n)\}\) converges to its supremum:
+\[ \lim_{n \to \infty} \nu(B_n) = \sup_n \nu(B_n). \]
+
+Consider the \(\sigma\)-additivity of \(\nu\),we have shown that:
+\[ \nu\left(\bigcup_{n=1}^\infty B_n\right) = \lim_{n \to \infty} \nu(B_n). \]
+
+\textcolor{blue}{2. Monotone Convergence for Decreasing Sequence of Sets}
+
+Statement: For arbitrary sets \(C_1 \supset C_2 \supset C_3 \supset \cdots\) in \(\mathcal{A}\),
+\[ \nu\left(\bigcap_{n=1}^\infty C_n\right) = \lim_{n \to \infty} \nu(C_n). \]
+
+
+Define \(C = \bigcap_{n=1}^\infty C_n\). The sequence \(\{C_n\}\) is decreasing, so \(C_{n+1} \subset C_n\) for all \(n\).
+
+Using the definition of \(\nu\) as a signed measure, we can express \(\nu(C)\) as the limit of \(\nu(C_n)\).
+
+First, observe that:
+\[ C = \bigcap_{n=1}^\infty C_n. \]
+
+Since the \(C_n\) are decreasing,
+\[ \nu(C_{n+1}) \leq \nu(C_n) \]
+for all \(n\). Thus, the sequence \(\{\nu(C_n)\}\) is monotone decreasing.
+
+Because \(\nu\) is a finite signed measure, it is bounded. Hence, the monotone sequence \(\{\nu(C_n)\}\) converges to its infimum:
+\[ \lim_{n \to \infty} \nu(C_n) = \inf_n \nu(C_n). \]
+
+Consider the \(\sigma\)-additivity of \(\nu\),we have shown that:
+\[ \nu\left(\bigcap_{n=1}^\infty C_n\right) = \lim_{n \to \infty} \nu(C_n). \]
+
+We have proven both statements for a finite signed measure \(\nu\) on \((\Omega, \mathcal{A})\):
+
+1. For an increasing sequence of sets \(\{B_n\}\):
+\[ \nu\left(\bigcup_{n=1}^\infty B_n\right) = \lim_{n \to \infty} \nu(B_n). \]
+
+2. For a decreasing sequence of sets \(\{C_n\}\):
+\[ \nu\left(\bigcap_{n=1}^\infty C_n\right) = \lim_{n \to \infty} \nu(C_n). \]
+\end{myproof}
+\dfn{Positive and negative sets}{
+Let $\nu$ be a finite signed measure on $(\Omega,\SA)$. A set $A_{\star}\subset\Omega$ is called $\nu-$positive if $A_{\star}\in\SA$ and 
+\begin{align}
+    \nu(A)\geq 0 \text{ for all }A\in\SA \text{ with }A\subset A_{\star}.
+\end{align}
+ A set $A_{\star}\subset\Omega$ is called $\nu-$negative if $A_{\star}\in\SA$ and 
+\begin{align}
+    \nu(A)\leq 0 \text{ for all }A\in\SA \text{ with }A\subset A_{\star}.
+\end{align}
+}
+\mprop{Existence of nontrivial positive sets}{
+Let $\nu$ be a finite signed measure on $(\Omega,\SA)$, and let $A_0\in\SA$ with $\nu(A_0)>0$. Then there exists a $\nu-$positive set $A_{\star}\subset A_0$ with  $\nu(A_{\star})\geq\nu(A_0)$.
+}
+\begin{myproof}
+    Define
+    \begin{align*}
+        \delta_0:=\sup\{-\nu(B):B\in\SA,B\subset A_0\}\geq 0.
+    \end{align*}Write $A_0=A_1\cup B_1$ with \textcolor{blue}{disjoint measurable sets $A_1$ and $B_1$} such that
+    \begin{align*}
+        -\nu(B_1)\geq\min\{\frac{\delta_0}{2},1\}.
+    \end{align*}[Iterated]:After $k$ steps we have measurable sets $A_0\supset A_1\supset\cdots\supset A_k$, and we consider the number 
+    \begin{align*}
+        \delta_k:=\sup\{-\nu(B):B\in\SA,B\subset A_k\}\geq 0.
+    \end{align*}Then we write $A_k=A_{k+1}\cup B_{k+1}$ with disjoint measurable sets $A_{k+1}$ and $B_{k+1}$ such that 
+    \begin{align*}
+        -\nu(B_{k+1})\geq\min\{\frac{\delta_k}{2},1\}.
+    \end{align*}This construction yields a non-increasing sequence $(A_k)_{k\geq 0}$ and the disjoint sets $B_k=A_{k-1}\backslash A_k,k\geq 1$. We may write 
+    \begin{align*}
+        A_0=A_{\star}\cup B_{\star}
+    \end{align*}with the disjoint sets
+    \begin{align*}
+        A_{\star}=\cap_{k\geq 0}A_k\text{ and }B_{\star}=\cup_{k\geq 1}B_k.
+    \end{align*}Since $\nu(B_{\star})=\sum_{k=1}^{\infty}\nu(B_k)$ with nonpositive summands $\nu(B_k)$, we obtain the inequality
+    \begin{align*}
+        \nu(A_{\star})=\nu(A_0)-\nu(B_{\star})\geq\nu(A_0).
+    \end{align*}Moreover, the sequence $(\nu(B_k))_{k\geq 1}$ converges to $0$, so the inequalities 
+    \begin{align*}
+       0\leq \min\{\frac{\delta_k}{2},1\}\leq -\nu(B_{k+1})\Rightarrow \lim_{k\to\infty}\delta_k=0.
+    \end{align*}Consequently, for any measurable set $A\subset A_{\star}$,
+    \begin{align*}
+        -\nu(A)\leq\inf_{k\geq 0}\sup\{-\nu(A'):A'\in\SA,A'\subset A_k\}=\inf_{k\geq 0}\delta_k=0,
+    \end{align*}whence $\nu(A)\geq0$. This shows that $A_{\star}$ is a $\nu-$positive set.
+\end{myproof}
+\ex{Unions of positive sets}{
+Let $\nu$ be a finite signed measure on $(\Omega,\SA)$. Let $(A_n)_{n\geq 1}$ be a sequence of $\nu-$positive sets. Show that
+}
 \section{Radon-Nikodym Derivatives}
 
 \subsection{Finite measures}
